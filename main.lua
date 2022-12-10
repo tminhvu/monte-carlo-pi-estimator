@@ -15,7 +15,7 @@ end
 function Point:is_inside(circle)
     local x = self.x - circle.center.x
     local y = self.y - circle.center.y
-    return (x * x + y * y < circle.r * circle.r)
+    return (x * x + y * y <= circle.r * circle.r)
 end
 
 function love.load()
@@ -24,8 +24,8 @@ function love.load()
     Points_in_square = 0
     Points_in_circle = 0
     Square = {
-        width = 300,
-        height = 300,
+        width = 600,
+        height = 600,
         left = 100,
         top = 60,
     }
@@ -45,7 +45,7 @@ function love.load()
                 y = Square.height + Square.top + 10
             },
             value = {
-                x = Square.left + 250,
+                x = Square.left + 160,
                 y = Square.height + Square.top + 10
             }
         },
@@ -55,8 +55,8 @@ function love.load()
                 y = Square.height + Square.top + 50
             },
             value = {
-                x = Square.left + 250,
-                y = Square.height + Square.top + 50
+                x = Square.left + 160,
+                y = Square.height + Square.top + 32
             }
         },
         pi = {
@@ -65,22 +65,22 @@ function love.load()
                 y = Square.height + Square.top + 90
             },
             value = {
-                x = Square.left + 80,
-                y = Square.height + Square.top + 90
+                x = Square.left + 50,
+                y = Square.height + Square.top + 52
             }
         },
         memory = {
             string = {
-                x = 5,
-                y = love.graphics.getHeight() - 20
+                x = 0,
+                y = 0
             },
             value = {
                 x = 180,
-                y = love.graphics.getHeight() - 20
+                y = 0
             }
         }
     }
-    love.graphics.setFont(love.graphics.newFont('monospace.ttf', 24))
+    love.graphics.setFont(love.graphics.newFont('monospace.ttf', 16))
 end
 
 function love.keypressed(key)
@@ -119,8 +119,8 @@ function love.draw()
         love.graphics.points({ p.x, p.y })
     end
 
-    love.graphics.print('Memory using (in kB): ', Print_position.memory.string.x, Print_position.memory.string.y, 0, 0.5
-        , 0.5)
-    love.graphics.print(collectgarbage('count'), Print_position.memory.value.x, Print_position.memory.value.y, 0, 0.5,
-        0.5)
+    love.graphics.print('Memory using (in kB): ', Print_position.memory.string.x, Print_position.memory.string.y, 0, 0.8
+        , 0.8)
+    love.graphics.print(collectgarbage('count'), Print_position.memory.value.x, Print_position.memory.value.y, 0, 0.8,
+        0.8)
 end
