@@ -80,7 +80,7 @@ function love.load()
             }
         }
     }
-    love.graphics.setFont(love.graphics.newFont('font.ttc', 32))
+    love.graphics.setFont(love.graphics.newFont('monospace.ttf', 24))
 end
 
 function love.keypressed(key)
